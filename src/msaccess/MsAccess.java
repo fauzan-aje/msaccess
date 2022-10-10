@@ -18,11 +18,16 @@ public class MsAccess {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String dbURL = "jdbc:ucanaccess://D:/fauzan/java/test1.accdb" ;
+//        String dbURL = "jdbc:ucanaccess://D:/fauzan/java/MsAccess/test1-mdb2007-accdb.accdb" ; //sukses insert
+//        String dbURL = "jdbc:ucanaccess://D:/fauzan/java/MsAccess/test1-mdb2000.mdb" ; //sukses insert
+//        String dbURL = "jdbc:ucanaccess://D:/fauzan/java/MsAccess/test1-mdb2002-2003.mdb" ; //sukses insert
+//        String dbURL = "jdbc:ucanaccess://D:/fauzan/java/MsAccess/bc20template.mdb" ; //sukses insert
+        String dbURL = "jdbc:ucanaccess://C:/Users/Busdev/Documents/Database12.mdb" ; //sukses insert
         try {
-            Connection conn = DriverManager.getConnection(dbURL);
+            Connection conn = DriverManager.getConnection(dbURL+";memory=false;openExclusive=true;ignoreCase=true;encrypt=true","Admin","1234");
             System.out.println("Sukses Konek ke Ms Access");
-            String sql = "INSERT INTO CONTACTS (CONTACT_ID,NAME,ADDRESS,EMAIL,PHONE) values ('2','Fauzan','Jkt','a@mail.com','081234567')";
+//            String sql = "INSERT INTO CONTACTS2 (CONTACT_ID,NAME,ADDRESS,EMAIL,PHONE) values ('2','Fauzan','Jkt','a@mail.com','081234567')";
+            String sql = "INSERT INTO tblPibCon (CAR,ContNo,ContUkur,ContTipe) values ('2','Fauzan','Jk','1')";
             Statement smt = conn.createStatement();
             int rows = smt.executeUpdate(sql);
             if(rows>0){
